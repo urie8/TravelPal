@@ -8,10 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\travelpal-high-resolution-logo-transparent.png" />
     <None Remove="Images\travelpal-low-resolution-logo-transparent.png" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\travelpal-high-resolution-logo-transparent.png" />
     <Resource Include="Images\travelpal-low-resolution-logo-transparent.png" />
   </ItemGroup>
 

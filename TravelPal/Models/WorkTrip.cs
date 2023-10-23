@@ -1,7 +1,6 @@
 ﻿namespace TravelPal.Models
 {
-    interface PackingListItem
+    class WorkTrip
     {
-
     }
 }

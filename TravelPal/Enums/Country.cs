@@ -95,7 +95,6 @@
         Kosovo,
         Kuwait,
         Kyrgyzstan,
-
         Laos,
         Latvia,
         Lebanon,
@@ -105,7 +104,6 @@
         Liechtenstein,
         Lithuania,
         Luxembourg,
-
         Madagascar,
         Malawi,
         Malaysia,
@@ -122,7 +120,6 @@
         Morocco,
         Mozambique,
         Myanmar,
-
         Namibia,
         Nauru,
         Nepal,
@@ -132,9 +129,7 @@
         Niger,
         Nigeria,
         Norway,
-
         Oman,
-
         Pakistan,
         Palau,
         Panama,
@@ -145,13 +140,10 @@
         Poland,
         Portugal,
         Qatar,
-
         Romania,
         Russia,
         Rwanda,
-
         SaintLucia,
-
         Samoa,
         SanMarino,
         SaudiArabia,
@@ -173,7 +165,6 @@
         Sweden,
         Switzerland,
         Syria,
-
         Taiwan,
         Tajikistan,
         Tanzania,
@@ -185,7 +176,6 @@
         Turkey,
         Turkmenistan,
         Tuvalu,
-
         Uganda,
         Ukraine,
         UnitedArabEmirates,
@@ -193,13 +183,11 @@
         UnitedStates,
         Uruguay,
         Uzbekistan,
-
         Vanuatu,
         VaticanCity,
         Venezuela,
         Vietnam,
         Yemen,
-
         Zambia,
         Zimbabwe
     }
