@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="600" Background="MediumSlateBlue">
+        Title="MainWindow" Height="500" Width="850" Background="MediumSlateBlue">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition Width="20"/>
@@ -23,16 +25,107 @@
             <RowDefinition/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-       <Image 
+        
+        <Image 
            Source="/Images/travelpal-low-resolution-logo-transparent.png" 
-           Grid.Column="1"
+           Grid.Column="2"
            Grid.Row="1"
            Grid.ColumnSpan="2"
            VerticalAlignment="Center"
            HorizontalAlignment="Center"
            Width="300"
               />
+        <Border
+            Grid.Column="2"
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="3" 
+            CornerRadius="25,25,25,25"
+            >
+            <Border.Background>
+                <SolidColorBrush Color="#FFF3933F" Opacity="1"/>
+            </Border.Background>
+        </Border>
+
+        <Label
+            Grid.Column="2"
+            Grid.Row="3"
+            Content="Username:"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="30"
+            FontFamily="Bahnschrift"
+            />
         
+        <Label
+            Grid.Column="2"
+            Grid.Row="4"
+            Content="Password:"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            FontSize="30"
+            FontFamily="Bahnschrift"
+            />
+
+        <Button
+            Name="btnLogIn"
+            Grid.Column="2"
+            Grid.Row="5"
+            Height="50"
+            Width="120"
+            Content="Sign In"
+            FontSize="20"
+            FontFamily="Bahnschrift"
+            Background="MintCream"
+            >
+            
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button
+             Name="btnRegister"
+             Grid.Column="3"
+             Grid.Row="5"
+             Height="50"
+             Width="120"
+             Content="Register"
+             FontSize="20"
+             FontFamily="Bahnschrift"
+             Background="MintCream"
+             >
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <TextBox
+            Name="txtUsername"
+            Grid.Column="3"
+            Grid.Row="3"
+            Height="30"
+            Width="180"
+            FontSize="20"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            />
+        <PasswordBox
+            Name="txtPassword"
+            Grid.Column="3"
+            Grid.Row="4"
+            Height="30"
+            Width="180"
+            FontSize="20"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            />
+
 
     </Grid>
 </Window>
