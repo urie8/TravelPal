@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="850" Background="MidnightBlue">
+        Title="MainWindow" Height="500" Width="850" Background="MidnightBlue" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -27,7 +27,6 @@
         </Grid.RowDefinitions>
         
         <Image 
-            
            Source="/Images/travelpal-high-resolution-logo-transparent.png" 
            Grid.Column="2"
            Grid.Row="1"
@@ -56,7 +55,7 @@
             VerticalAlignment="Center"
             HorizontalAlignment="Center"
             FontSize="30"
-            FontFamily="Yu Gothic UI Semibold"
+            FontFamily="Bahnschrift"
             />
         
         <Label
@@ -97,7 +96,7 @@
              Content="Register"
              FontSize="20"
              FontFamily="Bahnschrift"
-             Background="MintCream"
+             Background="MintCream" Click="btnRegister_Click"
              >
 
             <Button.Resources>
@@ -112,23 +111,22 @@
             Grid.Column="3"
             Grid.Row="3"
             Height="30"
-            Width="180"
+            Width="170"
             FontSize="20"
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
             />
-            
-            <PasswordBox
+
+        <PasswordBox
             Name="txtPassword"
             Grid.Column="3"
             Grid.Row="4"
             Height="30"
-            Width="180"
+            Width="170"
             FontSize="20"
             VerticalAlignment="Center"
             HorizontalAlignment="Left"
             />
-
-
+        
     </Grid>
 </Window>
