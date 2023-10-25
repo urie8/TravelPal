@@ -33,12 +33,13 @@
            Grid.Row="1"
            VerticalAlignment="Top"
            HorizontalAlignment="Left"
-           Width="200" Margin="104,17,0,0"
+           Width="200" Margin="94,17,0,0"
             />
 
         <Label
-            Grid.Column="1"
+            Grid.Column="0"
             Grid.Row="0"
+            Grid.ColumnSpan="2"
             Grid.RowSpan="2"
             Content="Logged in as:"
             Foreground="MintCream"
@@ -46,15 +47,16 @@
             FontFamily="Bahnschrift"
             />
         <Label
+             Name="lblUsername"
              Grid.Column="1"
              Grid.Row="0"
              Grid.RowSpan="2"
-            Grid.ColumnSpan="2"
+             Grid.ColumnSpan="2"
              Content="Username"
              Foreground="MintCream"
              FontSize="15"
              FontFamily="Bahnschrift"
-             Margin="95 0 0 0"
+             Margin="75 0 0 0"
              />
         <ListView
             Grid.Column="2"
@@ -73,7 +75,6 @@
              FontSize="20"
              FontFamily="Bahnschrift"
              Background="MintCream" 
-             Click="btnLogIn_Click"
              >
 
             <Button.Resources>
@@ -93,7 +94,6 @@
                FontSize="20"
                FontFamily="Bahnschrift"
                Background="MintCream" 
-               Click="btnLogIn_Click"
                >
 
             <Button.Resources>
@@ -115,7 +115,6 @@
                FontFamily="Bahnschrift"
                Background="Crimson" 
                Foreground="MintCream"
-               Click="btnLogIn_Click"
                >
 
             <Button.Resources>
@@ -136,7 +135,6 @@
                 FontFamily="Bahnschrift"
                 Background="MediumSlateBlue" 
                 Foreground="MintCream"
-                Click="btnLogIn_Click"
                 >
 
             <Button.Resources>
@@ -155,7 +153,7 @@
                 Content="Sign out"
                 FontSize="20"
                 FontFamily="Bahnschrift"
-                Background="MintCream" Click="btnLogIn_Click"
+                Background="MintCream" 
                 >
 
             <Button.Resources>

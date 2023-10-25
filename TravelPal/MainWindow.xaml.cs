@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using TravelPal.Repositories;
 
 namespace TravelPal
 {
@@ -19,9 +20,21 @@ namespace TravelPal
             Close();
         }
 
-        private void btnLogIn_Click(object sender, RoutedEventArgs e)
+        private void btnSignIn_Click(object sender, RoutedEventArgs e)
         {
+            string username = txtUsername.Text;
+            string password = txtPassword.Password;
 
+            if (UserManager.SignInUser(username, password))
+            {
+                TravelsWindow travelsWindow = new(UserManager.CurrentSignedInUser);
+                travelsWindow.Show();
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("User does not exist!", "Warning", MessageBoxButton.OK);
+            }
         }
     }
 }
