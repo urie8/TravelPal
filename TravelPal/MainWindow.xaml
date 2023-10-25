@@ -77,7 +77,7 @@
             Content="Sign In"
             FontSize="20"
             FontFamily="Bahnschrift"
-            Background="MintCream"
+            Background="MintCream" Click="btnLogIn_Click"
             >
             
             <Button.Resources>

@@ -18,5 +18,10 @@ namespace TravelPal
             registerWindow.Show();
             Close();
         }
+
+        private void btnLogIn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

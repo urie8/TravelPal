@@ -1,7 +1,9 @@
 ﻿namespace TravelPal.Models
 {
-    interface PackingListItem
+    public interface PackingListItem
     {
+        public string Name { get; set; }
 
+        public string GetInfo();
     }
 }

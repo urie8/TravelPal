@@ -33,14 +33,16 @@ namespace TravelPal
 
             catch (ArgumentNullException ex)
             {
-                MessageBox.Show("User already in use!", "Warning", MessageBoxButton.OK);
+                MessageBox.Show("Username already in use!", "Warning", MessageBoxButton.OK);
             }
 
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
         }
     }
 }

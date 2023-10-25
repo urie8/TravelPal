@@ -6,5 +6,16 @@ namespace TravelPal.Repositories
     public static class TravelManager
     {
         public static List<Travel> Travels { get; set; } = new();
+
+
+        public static void AddTravel()
+        {
+
+        }
+
+        public static void RemoveTravel(Travel travel)
+        {
+            Travels.Remove(travel);
+        }
     }
 }
