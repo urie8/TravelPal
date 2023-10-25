@@ -12,6 +12,8 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -24,8 +26,144 @@
             <RowDefinition/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        
-        
-        
+        <Image 
+           Source="/Images/travelpal-high-resolution-logo-transparent.png" 
+           Grid.Column="4"
+           Grid.ColumnSpan="2"
+           Grid.Row="1"
+           VerticalAlignment="Top"
+           HorizontalAlignment="Left"
+           Width="200" Margin="104,17,0,0"
+            />
+
+        <Label
+            Grid.Column="1"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Content="Logged in as:"
+            Foreground="MintCream"
+            FontSize="15"
+            FontFamily="Bahnschrift"
+            />
+        <Label
+             Grid.Column="1"
+             Grid.Row="0"
+             Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+             Content="Username"
+             Foreground="MintCream"
+             FontSize="15"
+             FontFamily="Bahnschrift"
+             Margin="95 0 0 0"
+             />
+        <ListView
+            Grid.Column="2"
+            Grid.Row="2"
+            Grid.ColumnSpan="4"
+            Grid.RowSpan="5" Background="#FF96B3F1"
+            
+            />
+        <Button
+             Name="btnAddTravel"
+             Grid.Column="1"
+             Grid.Row="2"
+             Height="50"
+             Width="120"
+             Content="Add travel"
+             FontSize="20"
+             FontFamily="Bahnschrift"
+             Background="MintCream" 
+             Click="btnLogIn_Click"
+             >
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button
+               Name="btnDetails"
+               Grid.Column="1"
+               Grid.Row="3"
+               Height="50"
+               Width="120"
+               Content="Details"
+               FontSize="20"
+               FontFamily="Bahnschrift"
+               Background="MintCream" 
+               Click="btnLogIn_Click"
+               >
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+        <Button
+               Name="btnRemove"
+               Grid.Column="1"
+               Grid.Row="4"
+               Height="50"
+               Width="120"
+               Content="Remove"
+               FontSize="20"
+               FontFamily="Bahnschrift"
+               Background="Crimson" 
+               Foreground="MintCream"
+               Click="btnLogIn_Click"
+               >
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button
+                Name="btnInfo"
+                Grid.Column="1"
+                Grid.Row="5"
+                Height="50"
+                Width="120"
+                Content="Info"
+                FontSize="20"
+                FontFamily="Bahnschrift"
+                Background="MediumSlateBlue" 
+                Foreground="MintCream"
+                Click="btnLogIn_Click"
+                >
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button
+                Name="btnSignOut"
+                Grid.Column="1"
+                Grid.Row="6"
+                Height="50"
+                Width="120"
+                Content="Sign out"
+                FontSize="20"
+                FontFamily="Bahnschrift"
+                Background="MintCream" Click="btnLogIn_Click"
+                >
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
     </Grid>
 </Window>

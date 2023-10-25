@@ -31,7 +31,7 @@ namespace TravelPal
                 Close();
             }
 
-            catch (ArgumentNullException ex)
+            catch (ArgumentNullException)
             {
                 MessageBox.Show("Username already in use!", "Warning", MessageBoxButton.OK);
             }
