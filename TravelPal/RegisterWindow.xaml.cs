@@ -7,7 +7,7 @@ namespace TravelPal
 {
     /// <summary>
     /// Interaction logic for RegisterWindow.xaml
-    /// </summary>
+    /// </summary>s
     public partial class RegisterWindow : Window
     {
         public RegisterWindow()
