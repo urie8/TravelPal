@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
         mc:Ignorable="d"
-        Title="AddTravelWindow" Height="450" Width="600" Background="MidnightBlue">
+        Title="AddTravelWindow" Height="450" Width="600" Background="MidnightBlue" ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -16,8 +16,11 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
@@ -32,10 +35,11 @@
             Grid.Column="1"
             Grid.Row="1"
             Grid.ColumnSpan="2"
+
             Content="New trip"
-            FontSize="35"
+            FontSize="32"
             FontFamily="Bahnschrift"
-            Foreground="MintCream"
+            Foreground="Gold"
             />
 
         <Label
@@ -85,7 +89,7 @@
          />
         <Label
              Grid.Column="1"
-             Grid.Row="6"
+             Grid.Row="8"
              Content="Packing item:"
              Grid.ColumnSpan="2"
              FontSize="25"
@@ -94,5 +98,200 @@
              VerticalAlignment="Center"
              HorizontalAlignment="Left"
          />
+
+        <Label
+             Name="lblMeeting"
+             Grid.Column="1"
+             Grid.Row="6"
+             Content="Meeting details:"
+             Grid.ColumnSpan="2"
+             FontSize="25"
+             FontFamily="Bahnschrift"
+             Foreground="MintCream"
+             VerticalAlignment="Center"
+             HorizontalAlignment="Left"
+             Visibility="Hidden"
+          />
+
+        <Label
+               Name="lblAllInclusive"
+               Grid.Column="1"
+               Grid.Row="6"
+               Content="All inclusive:"
+               Grid.ColumnSpan="2"
+               FontSize="25"
+               FontFamily="Bahnschrift"
+               Foreground="MintCream"
+               VerticalAlignment="Center"
+               HorizontalAlignment="Left"
+               Visibility="Hidden"
+           />
+
+        <Label
+             Grid.Column="3"
+             Grid.Row="1"
+             Content="Packing list"
+             Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
+             FontSize="25"
+             FontFamily="Bahnschrift"
+             Foreground="MediumSlateBlue"
+             VerticalAlignment="Bottom"
+             HorizontalAlignment="Left"
+             Margin="50 0 0 25"
+         />
+
+        <Label
+             Grid.Column="1"
+             Grid.Row="9"
+             Content="Travel document"
+             FontSize="10"
+             FontFamily="Bahnschrift"
+             Foreground="MintCream"
+             HorizontalAlignment="Left"
+             VerticalAlignment="Top"
+         />
+
+        <Label
+              Name="lblRequired"
+              Grid.Column="1"
+              Grid.Row="9"
+              Content="Required"
+              FontSize="10"
+              FontFamily="Bahnschrift"
+              Foreground="MintCream"
+              VerticalAlignment="Center"
+              Margin="0 10 0 0"
+              Visibility="Hidden"
+          />
+
+        <Label
+              Name="lblQuantitys"
+              Grid.Column="1"
+              Grid.Row="9"
+              Content="Quantity:"
+              FontSize="10"
+              FontFamily="Bahnschrift"
+              Foreground="MintCream"
+              VerticalAlignment="Center"
+              Margin="0 10 0 0"
+          />
+
+        <ListView
+            Name="lstPackingList"
+            Grid.Column="3"
+            Grid.Row="1"
+            Grid.ColumnSpan="3"
+            Grid.RowSpan="9" 
+            Margin="56,56,0,56"
+            />
+        <TextBox
+            Name="txtCity"
+            Grid.Column="1"
+            Grid.Row="2"
+            Height="20"
+            Width="100"
+            Grid.ColumnSpan="2"            
+            />
+
+        <TextBox
+             Name="txtTravellers"
+             Grid.Column="1"
+             Grid.Row="4"
+             Height="20"
+             Width="30"
+             Grid.ColumnSpan="2"     
+             Margin="70 0 0 0"
+             />
+
+        <TextBox
+             Name="txtMeetingDetails"
+             Grid.Column="1"
+             Grid.Row="6"
+             Height="40"
+             Width="200"
+             Margin="6,37,18,10"
+             Grid.RowSpan="2"
+             Grid.ColumnSpan="2"
+             Visibility="Hidden"
+            
+             />
+
+        <TextBox
+              Name="txtPackingItem"
+              Grid.Column="2"
+              Grid.Row="8"
+              Height="20"
+              Width="100"
+              HorizontalAlignment="Left" 
+              Grid.ColumnSpan="2" 
+              Margin="47,12,0,12"
+              />
+
+        <ComboBox
+            Grid.Column="1"
+            Grid.Row="3"
+            Height="20"
+            Width="80"
+            Grid.ColumnSpan="2"
+            Margin="70 0 0 0"
+            />
+        <ComboBox
+             Grid.Column="1"
+             Grid.Row="5"
+             Height="20"
+             Width="70"
+             Grid.ColumnSpan="2"
+             Margin="130 0 0 0"
+             />
+
+        <CheckBox
+            Name="ckbAllInclusive"
+            Grid.Column="2"
+            Grid.Row="6"
+            Height="15"
+            Width="15"
+            Visibility="Hidden"
+            />
+
+        <CheckBox
+             Name="ckbTravelDocument"
+             Grid.Column="1"
+             Grid.Row="9"
+             Height="15"
+             Width="15" 
+             Margin="87,4,10,25"
+             />
+
+        <CheckBox
+             Name="ckbRequired"
+             Grid.Column="1"
+             Grid.Row="9"
+             Height="15"
+             Width="15" 
+             Margin="87,20,10,9"
+             Visibility="Hidden"
+             />
+
+
+        <Button
+              Name="btnAddItem"
+              Grid.Column="2"
+              Grid.Row="9"
+              Height="40"
+              Width="80"
+              Content="Add item"
+              FontSize="15"
+              FontFamily="Bahnschrift"
+              Background="MintCream" 
+              >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
     </Grid>
 </Window>

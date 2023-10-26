@@ -8,15 +8,9 @@ namespace TravelPal.Repositories
         public static List<Travel> Travels { get; set; } = new();
 
 
-        public static void AddTravel()
+        public static void AddTravel(Travel travel)
         {
-            foreach (User user in UserManager.Users)
-            {
-                foreach (Travel travel in user.Travels)
-                {
-                    Travels.Add(travel);
-                }
-            }
+            Travels.Add(travel);
         }
 
         public static void RemoveTravel(Travel travel)
