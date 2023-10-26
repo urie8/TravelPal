@@ -1,0 +1,98 @@
+﻿<Window x:Class="TravelPal.AddTravelWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPal"
+        mc:Ignorable="d"
+        Title="AddTravelWindow" Height="450" Width="600" Background="MidnightBlue">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Column="1"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Content="New trip"
+            FontSize="35"
+            FontFamily="Bahnschrift"
+            Foreground="MintCream"
+            />
+
+        <Label
+            Grid.Column="1"
+            Grid.Row="2"
+            Content="City:"
+            FontSize="25"
+            FontFamily="Bahnschrift"
+            Foreground="MintCream"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            />
+
+        <Label
+            Grid.Column="1"
+            Grid.Row="3"
+            Content="Country:"
+            FontSize="25"
+            FontFamily="Bahnschrift"
+            Foreground="MintCream"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            />
+
+        <Label
+            Grid.Column="1"
+            Grid.Row="4"
+            Content="Travellers:"
+            Grid.ColumnSpan="2"
+            FontSize="25"
+            FontFamily="Bahnschrift"
+            Foreground="MintCream"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+            />
+
+        <Label
+             Grid.Column="1"
+             Grid.Row="5"
+             Content="Type of trip:"
+             Grid.ColumnSpan="2"
+             FontSize="25"
+             FontFamily="Bahnschrift"
+             Foreground="MintCream"
+             VerticalAlignment="Center"
+             HorizontalAlignment="Left"
+         />
+        <Label
+             Grid.Column="1"
+             Grid.Row="6"
+             Content="Packing item:"
+             Grid.ColumnSpan="2"
+             FontSize="25"
+             FontFamily="Bahnschrift"
+             Foreground="MintCream"
+             VerticalAlignment="Center"
+             HorizontalAlignment="Left"
+         />
+    </Grid>
+</Window>

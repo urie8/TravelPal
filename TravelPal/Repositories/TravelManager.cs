@@ -10,7 +10,13 @@ namespace TravelPal.Repositories
 
         public static void AddTravel()
         {
-
+            foreach (User user in UserManager.Users)
+            {
+                foreach (Travel travel in user.Travels)
+                {
+                    Travels.Add(travel);
+                }
+            }
         }
 
         public static void RemoveTravel(Travel travel)

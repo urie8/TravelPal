@@ -26,15 +26,6 @@
             <RowDefinition/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <Image 
-           Source="/Images/travelpal-high-resolution-logo-transparent.png" 
-           Grid.Column="4"
-           Grid.ColumnSpan="2"
-           Grid.Row="1"
-           VerticalAlignment="Top"
-           HorizontalAlignment="Left"
-           Width="200" Margin="94,17,0,0"
-            />
 
         <Label
             Grid.Column="0"
@@ -58,12 +49,24 @@
              FontFamily="Bahnschrift"
              Margin="75 0 0 0"
              />
+
+        <Label
+             Grid.Column="5"
+             Grid.Row="1"
+             Content="Travels list"
+             Foreground="MintCream"
+             FontSize="30"
+             FontFamily="Bahnschrift"
+             VerticalAlignment="Bottom"
+             Grid.ColumnSpan="2"
+             />
         <ListView
+            Name="lstTravels"
             Grid.Column="2"
             Grid.Row="2"
             Grid.ColumnSpan="4"
-            Grid.RowSpan="5" Background="#FF96B3F1"
-            
+            Grid.RowSpan="5" 
+            Background="#FF96B3F1"
             />
         <Button
              Name="btnAddTravel"
@@ -74,7 +77,7 @@
              Content="Add travel"
              FontSize="20"
              FontFamily="Bahnschrift"
-             Background="MintCream" 
+             Background="MintCream" Click="btnAddTravel_Click" 
              >
 
             <Button.Resources>
@@ -93,7 +96,7 @@
                Content="Details"
                FontSize="20"
                FontFamily="Bahnschrift"
-               Background="MintCream" 
+               Background="MintCream" Click="btnDetails_Click" 
                >
 
             <Button.Resources>
@@ -102,8 +105,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-
-
+        
         <Button
                Name="btnRemove"
                Grid.Column="1"
@@ -114,7 +116,7 @@
                FontSize="20"
                FontFamily="Bahnschrift"
                Background="Crimson" 
-               Foreground="MintCream"
+               Foreground="MintCream" Click="btnRemove_Click"
                >
 
             <Button.Resources>
@@ -134,7 +136,7 @@
                 FontSize="20"
                 FontFamily="Bahnschrift"
                 Background="MediumSlateBlue" 
-                Foreground="MintCream"
+                Foreground="MintCream" Click="btnInfo_Click"
                 >
 
             <Button.Resources>
@@ -153,7 +155,7 @@
                 Content="Sign out"
                 FontSize="20"
                 FontFamily="Bahnschrift"
-                Background="MintCream" 
+                Background="MintCream" Click="btnSignOut_Click" 
                 >
 
             <Button.Resources>
