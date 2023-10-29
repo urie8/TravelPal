@@ -175,7 +175,7 @@
               Foreground="MintCream"
               VerticalAlignment="Center"
               Margin="0 10 0 0"
-          />
+            />
 
         <ListView
             Name="lstPackingList"
@@ -184,6 +184,8 @@
             Grid.ColumnSpan="3"
             Grid.RowSpan="9" 
             Margin="56,56,0,56"
+            Background="#FF96B3F1"
+
             />
         <TextBox
             Name="txtCity"
@@ -234,7 +236,7 @@
               Grid.Row="9"
               Height="12"
               Width="20"
-              FontSize="10"
+              FontSize="8"
               HorizontalAlignment="Left" 
               Margin="50,20,0,9"
               />
@@ -298,7 +300,9 @@
               Content="Add item"
               FontSize="15"
               FontFamily="Bahnschrift"
-              Background="MintCream" 
+              Background="MediumSlateBlue"
+              Foreground="MintCream"
+              Click="btnAddItem_Click" 
               >
             <Button.Resources>
                 <Style TargetType="Border">
@@ -307,6 +311,41 @@
             </Button.Resources>
         </Button>
 
+        <Button
+               Name="btnAddTrip"
+               Grid.Column="4"
+               Grid.Row="9"
+               Height="40"
+               Width="80"
+               Content="Add trip"
+               FontSize="15"
+               FontFamily="Bahnschrift"
+               Background="MintCream" 
+               >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        <Button
+                Name="btnExit"
+                Grid.Column="5"
+                Grid.Row="9"
+                Height="40"
+                Width="80"
+                Content="Exit"
+                FontSize="15"
+                FontFamily="Bahnschrift"
+                Background="Crimson" 
+                Foreground="MintCream"
+                >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
 
     </Grid>
 </Window>

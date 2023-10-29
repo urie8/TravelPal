@@ -37,7 +37,7 @@ namespace TravelPal
                     }
                 }
             }
-            // Checks if the current signed in user is a normal user, if it is then the list of travels is filled with the users list of travels.
+            // If its a normal user then only the specific users travels is added to the list of travels
             else
             {
                 currentUser = (User)user;

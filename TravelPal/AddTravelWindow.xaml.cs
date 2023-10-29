@@ -22,10 +22,24 @@ namespace TravelPal
 
             cbCountry.ItemsSource = Enum.GetValues(typeof(Country));
 
+
+            // If the user is located outside of EU then a passport with required set as true is added to the packinglist
+            if (!Enum.IsDefined(typeof(EuropeanCountry), User.Location.ToString()))
+            {
+                TravelDocument travelDocument = new("Passport", true);
+
+                ListViewItem item = new();
+                item.Tag = travelDocument;
+                item.Content = travelDocument.GetInfo();
+                lstPackingList.Items.Add(item);
+
+            }
+
         }
+
         private void cbCountry_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
-
+            // If the user is located within EU and the destination is not then a passport with required set as true is added to the packinglist
             if (Enum.IsDefined(typeof(EuropeanCountry), User.Location.ToString()) && !Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedItem.ToString()))
             {
                 TravelDocument travelDocument = new("Passport", true);
@@ -37,6 +51,18 @@ namespace TravelPal
 
 
             }
+            // If the user is located within EU and the destination is also located within EU then a passport with required set as false is added to the packinglist
+            else if (Enum.IsDefined(typeof(EuropeanCountry), User.Location.ToString()) && Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedItem.ToString()))
+            {
+                TravelDocument travelDocument = new("Passport", false);
+
+                ListViewItem item = new();
+                item.Tag = travelDocument;
+                item.Content = travelDocument.GetInfo();
+                lstPackingList.Items.Add(item);
+
+            }
+
         }
         private void cbTripType_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
@@ -79,6 +105,21 @@ namespace TravelPal
             txtQuantity.Visibility = Visibility.Visible;
         }
 
+        private void btnAddItem_Click(object sender, RoutedEventArgs e)
+        {
+            string destination = txtCity.Text;
+            Country country = (Country)cbCountry.SelectedItem;
+            int travellers = int.Parse(txtTravellers.Text);
+            if (cbTripType.SelectedItem == "Vacation")
+            {
+                bool isAllInclusive = false;
 
+                if (ckbAllInclusive.IsChecked == true)
+                {
+                    isAllInclusive = true;
+                }
+
+            }
+        }
     }
 }
