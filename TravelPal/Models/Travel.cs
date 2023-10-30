@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TravelPal.Enums;
 
 namespace TravelPal.Models
@@ -10,9 +11,9 @@ namespace TravelPal.Models
         public int Travellers { get; set; }
         public List<PackingListItem> PackingList { get; set; }
 
-        //public DateTime StartDate { get; set; }
-        //public DateTime ËndDate { get; set; }
-        //public int TravelDays { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int TravelDays { get; set; }
 
         public Travel(string destination, Country countries, int travellers)
         {

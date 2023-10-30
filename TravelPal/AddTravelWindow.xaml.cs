@@ -107,19 +107,43 @@ namespace TravelPal
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
-            string destination = txtCity.Text;
-            Country country = (Country)cbCountry.SelectedItem;
-            int travellers = int.Parse(txtTravellers.Text);
-            if (cbTripType.SelectedItem == "Vacation")
-            {
-                bool isAllInclusive = false;
+            string name = txtPackingItem.Text;
+            ListViewItem item = new();
 
-                if (ckbAllInclusive.IsChecked == true)
+            if (ckbTravelDocument.IsChecked == true)
+            {
+                if (ckbRequired.IsChecked == true)
                 {
-                    isAllInclusive = true;
+                    TravelDocument newRequiredTravelDocument = new(name, true);
+
+                    item.Tag = newRequiredTravelDocument;
+                    item.Content = newRequiredTravelDocument.GetInfo();
+
+                    lstPackingList.Items.Add(item);
                 }
+                else
+                {
+                    TravelDocument newTravelDocument = new(name, false);
+
+                    item.Tag = newTravelDocument;
+                    item.Content = newTravelDocument.GetInfo();
+
+                    lstPackingList.Items.Add(item);
+                }
+            }
+
+            else
+            {
+                OtherItem newItem = new(name);
+
+                item.Tag = newItem;
+                item.Content = newItem.GetInfo();
+
+                lstPackingList.Items.Add(item);
 
             }
+
         }
     }
 }
+
