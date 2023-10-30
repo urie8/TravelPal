@@ -14,6 +14,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            
             <ColumnDefinition/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
@@ -40,9 +41,10 @@
             Grid.ColumnSpan="2"
 
             Content="New trip"
-            FontSize="32"
+            FontSize="30"
             FontFamily="Bahnschrift"
             Foreground="Gold"
+            Grid.RowSpan="2"
             />
 
         <Label
@@ -180,6 +182,28 @@
               Margin="0 10 0 0"
             />
 
+        <Label
+          Grid.Column="3"
+          Grid.Row="7"
+          Content="Start date:"
+          FontSize="10"
+          FontFamily="Bahnschrift"
+          Foreground="MintCream"
+          VerticalAlignment="Bottom"
+          HorizontalAlignment="Center"
+        />
+
+        <Label
+           Grid.Column="5"
+           Grid.Row="7"
+           Content="End date:"
+           FontSize="10"
+           FontFamily="Bahnschrift"
+           Foreground="MintCream"
+           VerticalAlignment="Bottom"
+           HorizontalAlignment="Center"
+         />
+
         <ListView
             Name="lstPackingList"
             Grid.Column="3"
@@ -191,15 +215,15 @@
             />
 
         <Calendar
-            Name="crStartDate"
-            Grid.Column="2"
+            Name="calStartDate"
+            Grid.Column="3"
             Grid.Row="8"
-            Grid.ColumnSpan="4"
+            Grid.ColumnSpan="2"
             Grid.RowSpan="5" 
             />
 
         <Calendar
-             Name="crEndDate"
+             Name="calEndDate"
              Grid.Column="5"
              Grid.Row="8"
              Grid.ColumnSpan="2"
@@ -234,8 +258,8 @@
              Margin="6,37,18,10"
              Grid.RowSpan="2"
              Grid.ColumnSpan="2"
+             HorizontalAlignment="Left"
              Visibility="Hidden"
-            
              />
 
         <TextBox
@@ -340,7 +364,7 @@
                Content="Add trip"
                FontSize="15"
                FontFamily="Bahnschrift"
-               Background="MintCream" 
+               Background="MintCream" Click="btnAddTrip_Click" 
                >
             <Button.Resources>
                 <Style TargetType="Border">

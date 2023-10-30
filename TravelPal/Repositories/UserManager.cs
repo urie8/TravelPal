@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TravelPal.Enums;
 using TravelPal.Models;
+using TravelPal.Utilities;
 
 namespace TravelPal.Repositories
 {
@@ -26,7 +26,7 @@ namespace TravelPal.Repositories
                 return newUser;
 
             }
-            throw new ArgumentNullException();
+            throw new InvalidUsernameException("Username is already taken");
         }
 
         public static void RemoveUser(IUser user)

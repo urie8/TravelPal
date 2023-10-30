@@ -2,6 +2,7 @@
 using System.Windows;
 using TravelPal.Enums;
 using TravelPal.Repositories;
+using TravelPal.Utilities;
 
 namespace TravelPal
 {
@@ -31,9 +32,9 @@ namespace TravelPal
                 Close();
             }
 
-            catch (ArgumentNullException)
+            catch (InvalidUsernameException ex)
             {
-                MessageBox.Show("Username already in use!", "Warning", MessageBoxButton.OK);
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButton.OK);
             }
 
         }

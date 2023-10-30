@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using TravelPal.Enums;
 using TravelPal.Models;
+using TravelPal.Repositories;
 
 namespace TravelPal
 {
@@ -120,6 +121,8 @@ namespace TravelPal
                     item.Content = newRequiredTravelDocument.GetInfo();
 
                     lstPackingList.Items.Add(item);
+
+                    TextClear();
                 }
                 else
                 {
@@ -129,20 +132,71 @@ namespace TravelPal
                     item.Content = newTravelDocument.GetInfo();
 
                     lstPackingList.Items.Add(item);
+
+                    TextClear();
                 }
             }
 
             else
             {
-                OtherItem newItem = new(name);
+                int quantity = int.Parse(txtQuantity.Text);
+
+                OtherItem newItem = new(name, quantity);
 
                 item.Tag = newItem;
                 item.Content = newItem.GetInfo();
 
                 lstPackingList.Items.Add(item);
 
+                TextClear();
+
             }
 
+        }
+
+        private void btnAddTrip_Click(object sender, RoutedEventArgs e)
+        {
+            string destination = txtCity.Text;
+            Country country = (Country)cbCountry.SelectedItem;
+            int travellers = int.Parse(txtTravellers.Text);
+            DateTime startDate = (DateTime)calStartDate.SelectedDate;
+            DateTime endDate = (DateTime)calStartDate.SelectedDate;
+
+            if (cbTripType.SelectedItem == "Worktrip")
+            {
+                string meetingDetails = txtMeetingDetails.Text;
+
+                WorkTrip newWorktrip = new(destination, country, travellers, startDate, endDate, meetingDetails);
+
+                User.Travels.Add(newWorktrip);
+                TravelManager.AddTravel(newWorktrip);
+
+                TravelsWindow newTravelsWindow = new(User);
+                newTravelsWindow.Show();
+                Close();
+
+            }
+            else if (cbTripType.SelectedItem == "Vacation")
+            {
+                if (ckbAllInclusive.IsChecked == true)
+                {
+                    Vacation newVacation = new(destination, country, travellers, startDate, endDate, true);
+                    User.Travels.Add(newVacation);
+                    TravelManager.AddTravel(newVacation);
+                }
+                else
+                {
+                    Vacation newVacation = new(destination, country, travellers, startDate, endDate, false);
+                    User.Travels.Add(newVacation);
+                    TravelManager.AddTravel(newVacation);
+                }
+            }
+        }
+
+        private void TextClear()
+        {
+            txtPackingItem.Clear();
+            txtQuantity.Clear();
         }
     }
 }

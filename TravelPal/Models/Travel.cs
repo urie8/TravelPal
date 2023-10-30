@@ -7,24 +7,25 @@ namespace TravelPal.Models
     public class Travel
     {
         public string Destination { get; set; }
-        public Country Countries { get; set; }
+        public Country Country { get; set; }
         public int Travellers { get; set; }
         public List<PackingListItem> PackingList { get; set; }
-
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int TravelDays { get; set; }
 
-        public Travel(string destination, Country countries, int travellers)
+        public Travel(string destination, Country country, int travellers, DateTime startDate, DateTime endDate)
         {
             Destination = destination;
-            Countries = countries;
+            Country = country;
             Travellers = travellers;
+            StartDate = startDate;
+            EndDate = endDate;
         }
 
         public virtual string GetInfo()
         {
-            return Destination;
+            return $"{Destination} {Country} {StartDate.ToShortDateString()} to {EndDate.ToShortDateString}";
         }
 
         private int CalculateTravelDays()
