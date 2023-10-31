@@ -30,10 +30,11 @@ namespace TravelPal
                 TravelDocument travelDocument = new("Passport", true);
 
                 ListViewItem item = new();
+
                 item.Tag = travelDocument;
                 item.Content = travelDocument.GetInfo();
-                lstPackingList.Items.Add(item);
 
+                lstPackingList.Items.Add(item);
             }
 
         }
@@ -49,8 +50,6 @@ namespace TravelPal
                 item.Tag = travelDocument;
                 item.Content = travelDocument.GetInfo();
                 lstPackingList.Items.Add(item);
-
-
             }
             // If the user is located within EU and the destination is also located within EU then a passport with required set as false is added to the packinglist
             else if (Enum.IsDefined(typeof(EuropeanCountry), User.Location.ToString()) && Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedItem.ToString()))
@@ -61,7 +60,6 @@ namespace TravelPal
                 item.Tag = travelDocument;
                 item.Content = travelDocument.GetInfo();
                 lstPackingList.Items.Add(item);
-
             }
 
         }
@@ -160,7 +158,7 @@ namespace TravelPal
             Country country = (Country)cbCountry.SelectedItem;
             int travellers = int.Parse(txtTravellers.Text);
             DateTime startDate = (DateTime)calStartDate.SelectedDate;
-            DateTime endDate = (DateTime)calStartDate.SelectedDate;
+            DateTime endDate = (DateTime)calEndDate.SelectedDate;
 
             if (cbTripType.SelectedItem == "Worktrip")
             {
@@ -183,12 +181,20 @@ namespace TravelPal
                     Vacation newVacation = new(destination, country, travellers, startDate, endDate, true);
                     User.Travels.Add(newVacation);
                     TravelManager.AddTravel(newVacation);
+
+                    TravelsWindow newTravelsWindow = new(User);
+                    newTravelsWindow.Show();
+                    Close();
                 }
                 else
                 {
                     Vacation newVacation = new(destination, country, travellers, startDate, endDate, false);
                     User.Travels.Add(newVacation);
                     TravelManager.AddTravel(newVacation);
+
+                    TravelsWindow newTravelsWindow = new(User);
+                    newTravelsWindow.Show();
+                    Close();
                 }
             }
         }
@@ -197,6 +203,13 @@ namespace TravelPal
         {
             txtPackingItem.Clear();
             txtQuantity.Clear();
+        }
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            TravelsWindow newTravelsWindow = new(User);
+            newTravelsWindow.Show();
+            Close();
         }
     }
 }

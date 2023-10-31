@@ -8,7 +8,6 @@ namespace TravelPal.Repositories
     public static class UserManager
     {
         public static List<IUser> Users { get; set; } = new()
-
         {
             new User("user","password", Enums.Country.Sweden),
             new Admin("admin","password"),

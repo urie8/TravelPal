@@ -13,6 +13,8 @@ namespace TravelPal.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int TravelDays { get; set; }
+        public Guid Id { get; set; } = new Guid();
+        //public User User { get; set; }
 
         public Travel(string destination, Country country, int travellers, DateTime startDate, DateTime endDate)
         {
@@ -25,7 +27,7 @@ namespace TravelPal.Models
 
         public virtual string GetInfo()
         {
-            return $"{Destination} {Country} {StartDate.ToShortDateString()} to {EndDate.ToShortDateString}";
+            return $"{Destination} {Country} {StartDate.ToShortDateString()} to {EndDate.ToShortDateString()}";
         }
 
         private int CalculateTravelDays()

@@ -11,7 +11,6 @@ namespace TravelPal
     public partial class TravelsWindow : Window
     {
         private User currentUser;
-        private Admin currentAdmin;
         public TravelsWindow(IUser user)
         {
             InitializeComponent();
@@ -22,7 +21,6 @@ namespace TravelPal
             // Checks if the current signed in user is an admin, if it is then the add button is disabled and every travel from every user is added to the list.
             if (user.GetType() == typeof(Admin))
             {
-                currentAdmin = (Admin)user;
                 btnAddTravel.IsEnabled = false;
 
                 if (TravelManager.Travels != null)
@@ -63,17 +61,55 @@ namespace TravelPal
             AddTravelWindow addTravelWindow = new(currentUser);
             addTravelWindow.Show();
             Close();
-
         }
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
+            ListViewItem selectedItem = (ListViewItem)lstTravels.SelectedItem;
 
+            TravelDetailsWindow newTravelDetailsWindow = new((Travel)selectedItem.Tag);
+            newTravelDetailsWindow.Show();
+            Close();
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
+            // Kolla vilken resa som är selectad
+            ListViewItem selectedItem = (ListViewItem)lstTravels.SelectedItem;
+            Travel selectedTravel = (Travel)selectedItem.Tag;
 
+            // Kolla om vi är admin eller user
+            if (UserManager.CurrentSignedInUser.GetType() == typeof(User))
+            {
+                currentUser = (User)UserManager.CurrentSignedInUser;
+                currentUser.Travels.Remove(selectedTravel);
+                lstTravels.Items.Remove(selectedItem);
+
+            }
+
+            else if (UserManager.CurrentSignedInUser.GetType() == typeof(Admin))
+            {
+                TravelManager.Travels.Remove(selectedTravel);
+                lstTravels.Items.Remove(selectedItem);
+
+                foreach (IUser user in UserManager.Users)
+                {
+                    if (user.GetType() == typeof(User))
+                    {
+                        User loopedUser = (User)user;
+
+                        foreach (Travel travel in loopedUser.Travels)
+                        {
+                            if (selectedTravel.Id == travel.Id)
+                            {
+                                loopedUser.Travels.Remove(travel);
+                                break;
+                            }
+                        }
+                    }
+                }
+
+            }
         }
 
         private void btnInfo_Click(object sender, RoutedEventArgs e)

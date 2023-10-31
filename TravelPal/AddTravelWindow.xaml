@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TravelPal"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="AddTravelWindow" Height="500" Width="800" Background="MidnightBlue" ResizeMode="NoResize">
     <Grid>
@@ -14,7 +15,6 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            
             <ColumnDefinition/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
@@ -179,6 +179,7 @@
               FontFamily="Bahnschrift"
               Foreground="MintCream"
               VerticalAlignment="Center"
+             HorizontalAlignment="Left"
               Margin="0 10 0 0"
             />
 
@@ -220,6 +221,7 @@
             Grid.Row="8"
             Grid.ColumnSpan="2"
             Grid.RowSpan="5" 
+            DisplayDateStart="{x:Static sys:DateTime.Today}"
             />
 
         <Calendar
@@ -228,6 +230,8 @@
              Grid.Row="8"
              Grid.ColumnSpan="2"
              Grid.RowSpan="5"
+             DisplayDateStart="{x:Static sys:DateTime.Today}"
+
              />
 
         <TextBox
@@ -255,8 +259,7 @@
              Grid.Row="6"
              Height="40"
              Width="200"
-             Margin="6,37,18,10"
-             Grid.RowSpan="2"
+             Grid.RowSpan="3"
              Grid.ColumnSpan="2"
              HorizontalAlignment="Left"
              Visibility="Hidden"
@@ -266,9 +269,11 @@
               Name="txtPackingItem"
               Grid.Column="2"
               Grid.Row="8"
+              Grid.RowSpan="2"
               Height="20"
               Width="100"
               HorizontalAlignment="Left" 
+              VerticalAlignment="top"
               Grid.ColumnSpan="2" 
               Margin="41,10,0,10"
               />
@@ -277,10 +282,12 @@
               Name="txtQuantity"
               Grid.Column="1"
               Grid.Row="9"
+              Grid.RowSpan="2"
               Height="12"
               Width="20"
               FontSize="8"
               HorizontalAlignment="Left" 
+              VerticalAlignment="Top"
               Margin="50,20,0,8"
               />
 
@@ -331,14 +338,16 @@
              Grid.Row="9"
              Height="15"
              Width="15" 
-             Margin="87,20,10,9"
-             Visibility="Hidden"
+             Margin="94,20,18,5"
+            Visibility="Hidden"
              />
 
         <Button
               Name="btnAddItem"
               Grid.Column="2"
               Grid.Row="9"
+              Grid.RowSpan="2"
+            VerticalAlignment="Top"
               Height="40"
               Width="80"
               Content="Add item"
@@ -359,6 +368,7 @@
                Name="btnAddTrip"
                Grid.Column="1"
                Grid.Row="11"
+               Grid.RowSpan="2"
                Height="40"
                Width="80"
                Content="Add trip"
@@ -377,13 +387,14 @@
                 Name="btnExit"
                 Grid.Column="2"
                 Grid.Row="11"
+                Grid.RowSpan="2"
                 Height="40"
                 Width="80"
                 Content="Exit"
                 FontSize="15"
                 FontFamily="Bahnschrift"
                 Background="Crimson" 
-                Foreground="MintCream"
+                Foreground="MintCream" Click="btnExit_Click"
                 >
             <Button.Resources>
                 <Style TargetType="Border">
