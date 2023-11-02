@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using TravelPal.Enums;
@@ -12,7 +13,7 @@ namespace TravelPal
     /// </summary>
     public partial class AddTravelWindow : Window
     {
-        User User { get; set; }
+        User User;
         public AddTravelWindow(User user)
         {
             User = user;
@@ -159,12 +160,21 @@ namespace TravelPal
             int travellers = int.Parse(txtTravellers.Text);
             DateTime startDate = (DateTime)calStartDate.SelectedDate;
             DateTime endDate = (DateTime)calEndDate.SelectedDate;
+            List<PackingListItem> packingList = new();
+
+            foreach (ListViewItem item in lstPackingList.Items)
+            {
+                PackingListItem packItem = (PackingListItem)item.Tag;
+                packingList.Add(packItem);
+            }
+
 
             if (cbTripType.SelectedItem == "Worktrip")
             {
                 string meetingDetails = txtMeetingDetails.Text;
 
                 WorkTrip newWorktrip = new(destination, country, travellers, startDate, endDate, meetingDetails);
+                newWorktrip.PackingList = packingList;
 
                 User.Travels.Add(newWorktrip);
                 TravelManager.AddTravel(newWorktrip);
@@ -179,6 +189,8 @@ namespace TravelPal
                 if (ckbAllInclusive.IsChecked == true)
                 {
                     Vacation newVacation = new(destination, country, travellers, startDate, endDate, true);
+                    newVacation.PackingList = packingList;
+
                     User.Travels.Add(newVacation);
                     TravelManager.AddTravel(newVacation);
 
@@ -189,6 +201,8 @@ namespace TravelPal
                 else
                 {
                     Vacation newVacation = new(destination, country, travellers, startDate, endDate, false);
+                    newVacation.PackingList = packingList;
+
                     User.Travels.Add(newVacation);
                     TravelManager.AddTravel(newVacation);
 

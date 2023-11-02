@@ -7,7 +7,6 @@ namespace TravelPal.Repositories
     {
         public static List<Travel> Travels { get; set; } = new();
 
-
         public static void AddTravel(Travel travel)
         {
             Travels.Add(travel);

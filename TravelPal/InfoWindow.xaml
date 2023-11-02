@@ -1,0 +1,83 @@
+﻿<Window x:Class="TravelPal.InfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TravelPal"
+        mc:Ignorable="d"
+        Title="InfoWindow" Height="350" Width="400" Background="MidnightBlue">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+
+        <Label
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="2"
+            FontSize="35"
+            Content="Info"
+            HorizontalAlignment="Center"
+            Foreground="MediumSlateBlue"
+            FontFamily="Bahnschrift" Margin="0,4,0,16" 
+            />
+        <TextBox
+            Grid.Column="1"
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="3"
+            Foreground="MintCream" 
+            Background="{x:Null}"
+            Text="Welcome to TravelPal! We are a travel agency that helps customers book flights, hotels, and plan their trips!"
+            TextWrapping="Wrap"
+            FontSize="15"
+            FontFamily="Bahnschrift"
+            TextAlignment="Center" Margin="0,49,0,24"
+            IsReadOnly="True"
+            />
+        <TextBox
+            Grid.Column="1"
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Grid.RowSpan="3"
+            Foreground="MintCream" 
+            Background="{x:Null}"
+            Text="Our app allows our users to manage and plan their travels by adding new travels to a list with detailed information such as city, country, number of travellers, packing list and more. You can also edit already existing travels in your travel list!"
+            TextWrapping="Wrap"
+            TextAlignment="Center"
+            FontSize="15"
+            FontFamily="Bahnschrift" Margin="0,41,0,0"
+            IsReadOnly="True"
+            />
+        <Button
+             Name="btnExit"
+             Grid.Column="2"
+             Grid.Row="6"
+             Grid.RowSpan="2"
+             Grid.ColumnSpan="2"
+             Height="30"
+             Width="60"
+             HorizontalAlignment="Right"
+             Content="Exit"
+             FontSize="15"
+             FontFamily="Bahnschrift"
+             Background="Red" 
+             Foreground="MintCream"
+             Click="btnExit_Click" 
+             Margin="0,30,0,0" 
+             />
+    </Grid>
+</Window>

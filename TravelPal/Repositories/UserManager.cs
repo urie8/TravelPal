@@ -25,6 +25,7 @@ namespace TravelPal.Repositories
                 return newUser;
 
             }
+
             throw new InvalidUsernameException("Username is already taken");
         }
 
@@ -60,9 +61,6 @@ namespace TravelPal.Repositories
             {
                 if (user.Username.Equals(username) && user.Password.Equals(password))
                 {
-
-                    // User found!
-
                     CurrentSignedInUser = user;
                     return true;
                 }
