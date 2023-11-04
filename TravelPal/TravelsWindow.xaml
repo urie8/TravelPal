@@ -51,7 +51,7 @@
              />
 
         <Label
-             Grid.Column="5"
+             Grid.Column="2"
              Grid.Row="1"
              Content="Travels list"
              Foreground="MintCream"

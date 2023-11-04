@@ -15,6 +15,7 @@ namespace TravelPal.Models
             Username = username;
             Password = password;
             Location = country;
+
         }
     }
 }

@@ -11,6 +11,10 @@
         }
         public string GetInfo()
         {
+            if (Required)
+            {
+                return $"{Name} | Required";
+            }
             return $"{Name}";
         }
     }

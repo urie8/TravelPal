@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using TravelPal.Enums;
 using TravelPal.Models;
 using TravelPal.Utilities;
@@ -9,8 +10,34 @@ namespace TravelPal.Repositories
     {
         public static List<IUser> Users { get; set; } = new()
         {
-            new User("user","password", Enums.Country.Sweden),
-            new Admin("admin","password"),
+            new User("user","password", Enums.Country.Sweden)
+            {
+                Travels = new List<Travel>{
+
+                new WorkTrip("New York",Country.UnitedStates,4,DateTime.Now,new DateTime(2023,11,05),"Meeting with the president.")
+                {
+                    PackingList = new List<PackingListItem>
+                    {
+                        new OtherItem("Soap",4),
+                        new TravelDocument("Visa",true)
+                    }
+                },
+
+                new Vacation("Tokyo",Country.Japan,4,DateTime.Now,new DateTime(2023,12,6),true)
+                {
+                    PackingList = new List<PackingListItem>
+                    {
+                        new OtherItem("Soap",4),
+                        new TravelDocument("Visa",true)
+                    }
+                }
+
+                }
+
+            },
+
+            new Admin("admin","password")
+
         };
         public static IUser? CurrentSignedInUser { get; set; }
 

@@ -13,7 +13,7 @@ namespace TravelPal.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int TravelDays { get; set; }
-        public Guid Id { get; set; } = new Guid();
+        public Guid Id { get; set; } = Guid.NewGuid();
 
         public Travel(string destination, Country country, int travellers, DateTime startDate, DateTime endDate)
         {

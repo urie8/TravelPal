@@ -73,9 +73,15 @@ namespace TravelPal
                 newTravelDetailsWindow.Show();
                 Close();
             }
-            else
+
+            else if (lstTravels.Items.Count == 0)
             {
                 MessageBox.Show("List is empty", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            else
+            {
+                MessageBox.Show("No travel selected", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
