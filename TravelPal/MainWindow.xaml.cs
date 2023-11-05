@@ -33,7 +33,7 @@ namespace TravelPal
             }
             else
             {
-                MessageBox.Show("User does not exist!", "Warning", MessageBoxButton.OK);
+                MessageBox.Show("User does not exist!", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
         }
     }

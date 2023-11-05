@@ -112,58 +112,91 @@ namespace TravelPal
 
         private void btnAddItem_Click(object sender, RoutedEventArgs e)
         {
-            string name = txtPackingItem.Text;
-            ListViewItem item = new();
-
-            if (ckbTravelDocument.IsChecked == true)
+            if (txtPackingItem.Text == string.Empty)
             {
-                if (ckbRequired.IsChecked == true)
-                {
-                    TravelDocument newRequiredTravelDocument = new(name, true);
-
-                    item.Tag = newRequiredTravelDocument;
-                    item.Content = newRequiredTravelDocument.GetInfo();
-
-                    lstPackingList.Items.Add(item);
-
-                    TextClear();
-                }
-                else
-                {
-                    TravelDocument newTravelDocument = new(name, false);
-
-                    item.Tag = newTravelDocument;
-                    item.Content = newTravelDocument.GetInfo();
-
-                    lstPackingList.Items.Add(item);
-
-                    TextClear();
-                }
+                MessageBox.Show("Please type in name of the item", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
             else
             {
-                int quantity = int.Parse(txtQuantity.Text);
+                string name = txtPackingItem.Text;
+                ListViewItem item = new();
 
-                OtherItem newItem = new(name, quantity);
+                if (ckbTravelDocument.IsChecked == true)
+                {
+                    if (ckbRequired.IsChecked == true)
+                    {
+                        TravelDocument newRequiredTravelDocument = new(name, true);
 
-                item.Tag = newItem;
-                item.Content = newItem.GetInfo();
+                        item.Tag = newRequiredTravelDocument;
+                        item.Content = newRequiredTravelDocument.GetInfo();
 
-                lstPackingList.Items.Add(item);
+                        lstPackingList.Items.Add(item);
 
-                TextClear();
+                        TextClear();
+                    }
+                    else
+                    {
+                        TravelDocument newTravelDocument = new(name, false);
 
+                        item.Tag = newTravelDocument;
+                        item.Content = newTravelDocument.GetInfo();
+
+                        lstPackingList.Items.Add(item);
+
+                        TextClear();
+                    }
+                }
+
+                else
+                {
+
+                    if (!int.TryParse(txtQuantity.Text, out _))
+                    {
+                        MessageBox.Show("Please input the quantity", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+
+                    else
+                    {
+                        int quantity = int.Parse(txtQuantity.Text);
+
+                        OtherItem newItem = new(name, quantity);
+
+                        item.Tag = newItem;
+                        item.Content = newItem.GetInfo();
+
+                        lstPackingList.Items.Add(item);
+
+                        TextClear();
+                    }
+                }
             }
-
         }
 
         private void btnAddTrip_Click(object sender, RoutedEventArgs e)
         {
-            if (txtCity.Text == null || cbCountry.SelectedItem == null || !int.TryParse(txtTravellers.Text, out _) || calStartDate.SelectedDate == null || calEndDate == null)
+            if (txtCity.Text == string.Empty)
             {
-                MessageBox.Show("Please do it sir", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please type in the name of the city", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            else if (cbCountry.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a country", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if (!int.TryParse(txtTravellers.Text, out _))
+            {
+                MessageBox.Show("Please type in a number", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            else if (calStartDate.SelectedDate == null)
+            {
+                MessageBox.Show("Please select start date", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+
+            }
+            else if (calEndDate.SelectedDate == null)
+            {
+                MessageBox.Show("Please select end date", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
             else
             {
                 string destination = txtCity.Text;
