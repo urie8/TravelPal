@@ -14,6 +14,7 @@ namespace TravelPal
     public partial class AddTravelWindow : Window
     {
         User User;
+        bool isOutsideEu;
         public AddTravelWindow(User user)
         {
             User = user;
@@ -28,6 +29,7 @@ namespace TravelPal
             // If the user is located outside of EU then a passport with required set as true is added to the packinglist
             if (!Enum.IsDefined(typeof(EuropeanCountry), User.Location.ToString()))
             {
+                isOutsideEu = true;
                 TravelDocument travelDocument = new("Passport", true);
 
                 ListViewItem item = new();
@@ -43,24 +45,27 @@ namespace TravelPal
         private void cbCountry_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
             // If the user is located within EU and the destination is not then a passport with required set as true is added to the packinglist
-            if (Enum.IsDefined(typeof(EuropeanCountry), User.Location.ToString()) && !Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedItem.ToString()))
+            if (!isOutsideEu)
             {
-                TravelDocument travelDocument = new("Passport", true);
+                if (Enum.IsDefined(typeof(EuropeanCountry), User.Location.ToString()) && !Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedItem.ToString()))
+                {
+                    TravelDocument travelDocument = new("Passport", true);
 
-                ListViewItem item = new();
-                item.Tag = travelDocument;
-                item.Content = travelDocument.GetInfo();
-                lstPackingList.Items.Add(item);
-            }
-            // If the user is located within EU and the destination is also located within EU then a passport with required set as false is added to the packinglist
-            else if (Enum.IsDefined(typeof(EuropeanCountry), User.Location.ToString()) && Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedItem.ToString()))
-            {
-                TravelDocument travelDocument = new("Passport", false);
+                    ListViewItem item = new();
+                    item.Tag = travelDocument;
+                    item.Content = travelDocument.GetInfo();
+                    lstPackingList.Items.Add(item);
+                }
+                // If the user is located within EU and the destination is also located within EU then a passport with required set as false is added to the packinglist
+                else if (Enum.IsDefined(typeof(EuropeanCountry), User.Location.ToString()) && Enum.IsDefined(typeof(EuropeanCountry), cbCountry.SelectedItem.ToString()))
+                {
+                    TravelDocument travelDocument = new("Passport", false);
 
-                ListViewItem item = new();
-                item.Tag = travelDocument;
-                item.Content = travelDocument.GetInfo();
-                lstPackingList.Items.Add(item);
+                    ListViewItem item = new();
+                    item.Tag = travelDocument;
+                    item.Content = travelDocument.GetInfo();
+                    lstPackingList.Items.Add(item);
+                }
             }
 
         }
@@ -155,60 +160,73 @@ namespace TravelPal
 
         private void btnAddTrip_Click(object sender, RoutedEventArgs e)
         {
-            string destination = txtCity.Text;
-            Country country = (Country)cbCountry.SelectedItem;
-            int travellers = int.Parse(txtTravellers.Text);
-            DateTime startDate = (DateTime)calStartDate.SelectedDate;
-            DateTime endDate = (DateTime)calEndDate.SelectedDate;
-            List<PackingListItem> packingList = new();
-
-            foreach (ListViewItem item in lstPackingList.Items)
+            if (txtCity.Text == null || cbCountry.SelectedItem == null || !int.TryParse(txtTravellers.Text, out _) || calStartDate.SelectedDate == null || calEndDate == null)
             {
-                PackingListItem packItem = (PackingListItem)item.Tag;
-                packingList.Add(packItem);
+                MessageBox.Show("Please do it sir", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
             }
-
-
-            if (cbTripType.SelectedItem == "Worktrip")
+            else
             {
-                string meetingDetails = txtMeetingDetails.Text;
+                string destination = txtCity.Text;
+                Country country = (Country)cbCountry.SelectedItem;
+                int travellers = int.Parse(txtTravellers.Text);
+                DateTime startDate = (DateTime)calStartDate.SelectedDate;
+                DateTime endDate = (DateTime)calEndDate.SelectedDate;
+                List<PackingListItem> packingList = new();
 
-                WorkTrip newWorktrip = new(destination, country, travellers, startDate, endDate, meetingDetails);
-                newWorktrip.PackingList = packingList;
-
-                User.Travels.Add(newWorktrip);
-                TravelManager.AddTravel(newWorktrip);
-
-                TravelsWindow newTravelsWindow = new(User);
-                newTravelsWindow.Show();
-                Close();
-
-            }
-            else if (cbTripType.SelectedItem == "Vacation")
-            {
-                if (ckbAllInclusive.IsChecked == true)
+                if (lstPackingList.Items != null)
                 {
-                    Vacation newVacation = new(destination, country, travellers, startDate, endDate, true);
-                    newVacation.PackingList = packingList;
+                    foreach (ListViewItem item in lstPackingList.Items)
+                    {
+                        PackingListItem packItem = (PackingListItem)item.Tag;
+                        packingList.Add(packItem);
+                    }
+                }
 
-                    User.Travels.Add(newVacation);
-                    TravelManager.AddTravel(newVacation);
+                if (cbTripType.SelectedItem == "Worktrip")
+                {
+                    string meetingDetails = txtMeetingDetails.Text;
+
+                    WorkTrip newWorktrip = new(destination, country, travellers, startDate, endDate, meetingDetails);
+                    newWorktrip.PackingList = packingList;
+
+                    User.Travels.Add(newWorktrip);
+                    TravelManager.AddTravel(newWorktrip);
 
                     TravelsWindow newTravelsWindow = new(User);
                     newTravelsWindow.Show();
                     Close();
+
+                }
+                else if (cbTripType.SelectedItem == "Vacation")
+                {
+                    if (ckbAllInclusive.IsChecked == true)
+                    {
+                        Vacation newVacation = new(destination, country, travellers, startDate, endDate, true);
+                        newVacation.PackingList = packingList;
+
+                        User.Travels.Add(newVacation);
+                        TravelManager.AddTravel(newVacation);
+
+                        TravelsWindow newTravelsWindow = new(User);
+                        newTravelsWindow.Show();
+                        Close();
+                    }
+                    else
+                    {
+                        Vacation newVacation = new(destination, country, travellers, startDate, endDate, false);
+                        newVacation.PackingList = packingList;
+
+                        User.Travels.Add(newVacation);
+                        TravelManager.AddTravel(newVacation);
+
+                        TravelsWindow newTravelsWindow = new(User);
+                        newTravelsWindow.Show();
+                        Close();
+                    }
                 }
                 else
                 {
-                    Vacation newVacation = new(destination, country, travellers, startDate, endDate, false);
-                    newVacation.PackingList = packingList;
-
-                    User.Travels.Add(newVacation);
-                    TravelManager.AddTravel(newVacation);
-
-                    TravelsWindow newTravelsWindow = new(User);
-                    newTravelsWindow.Show();
-                    Close();
+                    MessageBox.Show("Please select trip type", "Warning", MessageBoxButton.OK, MessageBoxImage.Exclamation);
                 }
             }
         }

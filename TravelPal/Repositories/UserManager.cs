@@ -28,7 +28,6 @@ namespace TravelPal.Repositories
                     PackingList = new List<PackingListItem>
                     {
                         new OtherItem("Soap",4),
-                        new TravelDocument("Visa",true)
                     }
                 }
 
