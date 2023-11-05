@@ -132,9 +132,13 @@ namespace TravelPal
 
                 }
             }
+            else if (lstTravels.Items.Count == 0)
+            {
+                MessageBox.Show("List is empty", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             else
             {
-                MessageBox.Show("There's nothing to remove!", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No travel selected", "Warning", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
         }
